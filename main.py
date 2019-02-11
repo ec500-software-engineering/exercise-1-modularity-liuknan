@@ -2,15 +2,15 @@ from AiModule import AiModule as AI
 from UserInterface_module import userInterface
 import Input_Module_lkn as I
 from Alert_module import Alert
-from storage import storage as St
+# from storage import storage as St
 while (True):
     #input
     bo = I.read_data("/Users/liuknan/Documents/GitHub/ModuleDesign/example/examplebo.txt")
     bp = I.read_data("/Users/liuknan/Documents/GitHub/ModuleDesign/example/examplebp.txt")
     pul = I.read_data("/Users/liuknan/Documents/GitHub/ModuleDesign/example/examplepul.txt")
     #storage
-    for i in range(len(bo)):
-        S = St(bo[i],bp[i],pul[i])
+    # for i in range(len(bo)):
+    #     S = St(bo[i],bp[i],pul[i])
     #AI
     A = AI()
     A.input_check(bo,bp,pul)

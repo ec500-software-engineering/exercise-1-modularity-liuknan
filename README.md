@@ -19,8 +19,6 @@ Three double values for estimated health score
 
 Data received from storage system is input to the unsupervised AI Module, and will generate the output which are three predicted values for patients’ future health condition estimation by using data as blood oxygen, blood pressure and pulse stored in storage system to make prediction.
 =======
-# EC500
-It's a readme document for the architecture based on the design of Mohit.
 ## Alert Module
 The input of this module should be the three inputs provided by the storage module. Actually the storage module does not change the value of
 the input of the patient's data. So the alert module will take the data from the patient. The doctor should set a value when he/she uses the 

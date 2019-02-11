@@ -1,6 +1,13 @@
-<<<<<<< HEAD
+
 # EC500
 It's a readme document for the architecture based on the design of Mohit.
+## Input Moudle
+### For the Input Module, it will read data from the sensor machine and save the data as three lists, then pass the lists to the Storage Module, Alert Module and AI Prediction Module.
+#### input 
+The path of the data file
+#### output 
+Three lists
+
 ## AI Module
 ### Name: AI Module
 
@@ -18,4 +25,3 @@ It's a readme document for the architecture based on the design of Mohit.
 The input of this module should be the three inputs provided by the storage module. Actually the storage module does not change the value of
 the input of the patient's data. So the alert module will take the data from the patient. The doctor should set a value when he/she uses the 
 product at the first time. While using the product, if the data of the patient pass beyond the value, which is set by the doctor, the alert module will change a global value. Then there will be some alerts because of the change of the value such as the red light shinning or something else.
->>>>>>> Input_lkn

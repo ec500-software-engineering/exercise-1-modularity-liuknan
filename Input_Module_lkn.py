@@ -1,3 +1,5 @@
+from multiprocessing import Queue
+import random
 def read_data(path):
     time = []
     value = []
@@ -17,4 +19,13 @@ def read_data(path):
     except:
         print("Error:No input data\n")
 
-        
+def rand_input(InputQ):
+    while True:
+        value1 = random.random()
+        value2 = random.random()
+        value3 = random.random()
+        InputQ.put([value1,value2,value3])
+
+def read_Q(Q):
+    while True:
+        value = Q.get(True)

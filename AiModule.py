@@ -12,17 +12,14 @@ class AiModule():
         check the input type from the database in case there are some mistake data.
         """
         try:
-            while True:
-                for i, j, k in zip(bloodOxygen, bloodPressure, pulse):
-                    if (type(i) != float) or (type(j) != float) or (type(k) != float):
-                        raise AttributeError
-                    else:
-                        self.bo.append(i)
-                        self.bp.append(j)
-                        self.pulse.append(k)
+            if (type(bloodOxygen) != float) or (type(bloodPressure) != float) or (type(pulse) != float):
+                raise AttributeError
+            else:
+                self.bo.append(bloodOxygen)
+                self.bp.append(bloodPressure)
+                self.pulse.append(pulse)
 
-                # print(self.bo)
-                break
+            # print(self.bo)
 
         except AttributeError:
             print('input type false')

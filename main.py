@@ -36,7 +36,7 @@ def middle(BoQinput, BoQoutput):
             #     boa = Alt.Alert_for_three_categories_input(boi)
             #     bpa = Alt.Alert_for_three_categories_input(bpi)
             #     pula = Alt.Alert_for_three_categories_input(puli)
-            BoQoutput.put(bo)
+            BoQoutput.put_nowait(bo)
             # BpQoutput.put_nowait(bp)
             # PulQoutput.put_nowait(pul)
             time.sleep(2)
@@ -49,16 +49,12 @@ def Output(BoQoutput):
             print(bo)
 
             U = userInterface()
-            U.getFromData(BoQoutput,BpQoutput,PulQoutput)
+            # U.getFromData(BoQoutput)
             time.sleep(2)
 
 if __name__ == '__main__':
     BoQinput = Queue()
-    BpQinput = Queue()
-    PulQinput = Queue()
     BoQoutput = Queue()
-    BpQoutput = Queue()
-    PulQoutput = Queue()
     t1 = threading.Thread(target= Input, args= (BoQinput,))
     t2 = threading.Thread(target= middle, args= (BoQinput, BoQoutput,))
     t3 = threading.Thread(target= Output, args= (BoQoutput,))

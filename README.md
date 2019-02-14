@@ -1,6 +1,7 @@
 
 # EC500
 It's a readme document for the architecture based on the design of Mohit.
+
 ## Requirements
 There is no special libraries you need to install, so you may ignore the requirements.txt and setup.py. The main.py is based on all other python files so you just need to import all of the .py files.
 

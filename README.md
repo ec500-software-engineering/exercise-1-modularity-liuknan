@@ -1,25 +1,22 @@
 
 # EC500
 It's a readme document for the architecture based on the design of Mohit.
-## Input Moudle
-### For the Input Module, it will read data from the sensor machine and save the data as three lists, then pass the lists to the Storage Module, Alert Module and AI Prediction Module.
-#### input 
-The path of the data file
-#### output 
-Three lists
+## Modules Introduction
+This program includes several modules and each of them is important.
+### Input Module
+The input module control the input of the whole program. Though we do not have a real machine or something else for us to acquire the real input, the Input Module will generate three random float number and put them in a list, then output the list to other modules.t
 
-## AI Module
-### Name: AI Module
+### Storage Module
+Storage Module has not been really impolemented yet since we do not need a database now. But basically it will accept the data from Input Module.
 
-### Input:
-Bo, bp, pul are three lists represent the value of blood oxygen, blood pressure and pulse which are defined as double.
-bo, bp, pul: list [float value]
-### Output:
-Three double values for estimated health score
+### Alert Module
+The Alert Module will receive data from Input Module and analyze the data. If the data is beyond, the Alert Module will send a signal to the UserInterface Module and tell the users that the input data is in an abnormal condition.
 
-Data received from storage system is input to the unsupervised AI Module, and will generate the output which are three predicted values for patients’ future health condition estimation by using data as blood oxygen, blood pressure and pulse stored in storage system to make prediction.
-=======
-## Alert Module
-The input of this module should be the three inputs provided by the storage module. Actually the storage module does not change the value of
-the input of the patient's data. So the alert module will take the data from the patient. The doctor should set a value when he/she uses the 
-product at the first time. While using the product, if the data of the patient pass beyond the value, which is set by the doctor, the alert module will change a global value. Then there will be some alerts because of the change of the value such as the red light shinning or something else.
+### AI Module
+The AI Module also get data from the Input Module and analyze the data, then predict the future data output according to the data, which is being analyzing.
+
+### UserInterface Module
+The UI Module displays the input data and show these data to the users. 
+
+### Thread
+We seperate all the modules into three parts. The first part is the Input Module, the second part is the UI Moudle and the rest of modules are in the last part. We implement three threads for all three parts so each part can work synchronously. And we have two queues for threads to communicate with each other.

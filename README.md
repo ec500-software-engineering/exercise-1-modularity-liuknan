@@ -24,5 +24,5 @@ The UI Module displays the input data and show these data to the users.
 
 ### Thread
 We seperate all the modules into three parts. The first part is the Input Module, the second part is the UI Moudle and the rest of modules are in the last part. We implement three threads for all three parts so each part can work synchronously. And we have two queues for threads to communicate with each other.
-https://github.com/ec500-software-engineering/exercise-1-modularity-liuknan/blob/master/500.png
+https://github.com/ec500-software-engineering/exercise-1-modularity-liuknan/raw/master/500.png
 

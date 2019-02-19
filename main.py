@@ -1,7 +1,7 @@
 from AiModule import AiModule as AI
 from UserInterface_module import userInterface
 import Input_Module_lkn as Inp
-from Alert_module import Alert
+# from Alert_module import Alert
 from queue import Queue
 import threading
 import time

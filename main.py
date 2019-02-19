@@ -26,10 +26,10 @@ def middle(BoQinput, BoQoutput):
             A.input_check(bo, bp, pul)
             # predBloodOxygen, predBloodPressure, prePulse = A.predict()
             # Alert
-            Alt = Alert()
-            boi = bo, 0
-            bpi = bp, 1
-            puli = pul, 2
+            # Alt = Alert()
+            # boi = bo, 0
+            # bpi = bp, 1
+            # puli = pul, 2
             # boa = Alt.Alert_for_three_categories_input(boi)
             # bpa = Alt.Alert_for_three_categories_input(bpi)
             # pula = Alt.Alert_for_three_categories_input(puli)

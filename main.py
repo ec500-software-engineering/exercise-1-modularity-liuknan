@@ -6,33 +6,46 @@ from queue import Queue
 import threading
 import time
 
-# from storage import storage as St
+
 def Input(BoQinput):
+    """
+    It's the input Moudle, which gets data from machine and pass data to other modules.
+    :param BoQinput: It's a queue for input to communicate input data between modules.
+    :return:
+    """
     while True:
         #input
-        Inp.rand_input(BoQinput)
+        Inp.rand_input(BoQinput) # Generating random data as input.
         time.sleep(2)
 
-def middle(BoQinput, BoQoutput, Pred, AlertQ):
-    while True:
 
+def middle(BoQinput, BoQoutput, Pred, AlertQ):
+    """
+    Middle part contains several modules, including AI module and Alert module.
+    :param BoQinput: It's a input queue.
+    :param BoQoutput: It's a queue and it pass data to output module.
+    :param Pred: A queue for prediction data.
+    :param AlertQ: A queue for alert module.
+    :return:
+    """
+    while True:
         if not BoQinput.empty():
-            value = BoQinput.get_nowait()
-            bo = value[0]
-            bp = value[1]
-            pul = value[2]
+            value = BoQinput.get_nowait()  # getting data from queue.
+            bo = value[0]  # blood oxygen
+            bp = value[1]  # blood pressure
+            pul = value[2] # pulse
             #AI
-            A = AI()
-            A.input_check(bo, bp, pul)
-            predBloodOxygen, predBloodPressure, prePulse = A.predict()
+            A = AI() # AI module
+            A.input_check(bo, bp, pul)  # check the type of input
+            predBloodOxygen, predBloodPressure, prePulse = A.predict()  ## prediction output
             pred_info = predBloodOxygen, predBloodPressure, prePulse
             Pred.put_nowait(pred_info)
             # Alert
-            Alt = Alert()
-            boi = bo, 0
+            Alt = Alert()  ## Alert Module
+            boi = bo, 0  ## the last number stands for the type of the data
             bpi = bp, 1
             puli = pul, 2
-            Alt.Alert_for_three_categories_input(boi)
+            Alt.Alert_for_three_categories_input(boi)  ## data check
             Alt.Alert_for_three_categories_input(bpi)
             Alt.Alert_for_three_categories_input(puli)
             alert = Alt.Alert_Output()
@@ -42,6 +55,13 @@ def middle(BoQinput, BoQoutput, Pred, AlertQ):
 
 
 def Output(BoQoutput, Pred, AlertQ):
+    """
+    It's the output part, could be seen as interface module.
+    :param BoQoutput: A queue for output data.
+    :param Pred: Queue for prediction data.
+    :param AlertQ: Queue for Alert information.
+    :return:
+    """
     while True:
         #Interface
         if not BoQoutput.empty():

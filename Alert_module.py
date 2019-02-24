@@ -7,7 +7,7 @@ class Alert():
         self.bo = []
         self.bp = []
         self.pul = []
-        # self.average_list = average_list = [[] for i in range(3)]
+        self.average_list = [[] for i in range(3)]
         self.alert_flag = -1
 
     def exceed_threshold(self, data, tp):
@@ -29,7 +29,7 @@ class Alert():
 
     def Alert_Output(self):
         """
-        Compare data with certain threthold
+        Compare data with certain threshold
         send flags to user interface module.
         """
         if self.alert_flag != -1:

@@ -14,8 +14,8 @@ def Input(BoQinput):
     :return:
     """
     while True:
-        #input
-        Inp.rand_input(BoQinput) # Generating random data as input.
+        # input
+        Inp.rand_input(BoQinput)  # Generating random data as input.
         time.sleep(2)
 
 
@@ -33,19 +33,19 @@ def middle(BoQinput, BoQoutput, Pred, AlertQ):
             value = BoQinput.get_nowait()  # getting data from queue.
             bo = value[0]  # blood oxygen
             bp = value[1]  # blood pressure
-            pul = value[2] # pulse
-            #AI
-            A = AI() # AI module
+            pul = value[2]  # pulse
+            # AI
+            A = AI()  # AI module
             A.input_check(bo, bp, pul)  # check the type of input
-            predBloodOxygen, predBloodPressure, prePulse = A.predict()  ## prediction output
+            predBloodOxygen, predBloodPressure, prePulse = A.predict()  # prediction output
             pred_info = predBloodOxygen, predBloodPressure, prePulse
             Pred.put_nowait(pred_info)
             # Alert
-            Alt = Alert()  ## Alert Module
-            boi = bo, 0  ## the last number stands for the type of the data
+            Alt = Alert()  # Alert Module
+            boi = bo, 0  # the last number stands for the type of the data
             bpi = bp, 1
             puli = pul, 2
-            Alt.Alert_for_three_categories_input(boi)  ## data check
+            Alt.Alert_for_three_categories_input(boi)  # data check
             Alt.Alert_for_three_categories_input(bpi)
             Alt.Alert_for_three_categories_input(puli)
             alert = Alt.Alert_Output()
@@ -63,7 +63,7 @@ def Output(BoQoutput, Pred, AlertQ):
     :return:
     """
     while True:
-        #Interface
+        # Interface
         if not BoQoutput.empty():
             value = BoQoutput.get_nowait()
             pred = Pred.get_nowait()
@@ -71,24 +71,22 @@ def Output(BoQoutput, Pred, AlertQ):
             bp = value[1]
             pul = value[2]
             Alert_info = AlertQ.get_nowait()
-            print("Blood Oxygen:%f\nBlood presure:%f\nPulse:%f\n" % (bo,bp,pul))
-            print("Prediction:",pred,"\n")
-            print("Alert information:",Alert_info,"\n")
+            print("Blood Oxygen:%f\nBlood presure:%f\nPulse:%f\n" % (bo, bp, pul))
+            print("Prediction:", pred, "\n")
+            print("Alert information:", Alert_info, "\n")
             U = userInterface()
-            U.getFromData(bo,bp,pul)
+            U.getFromData(bo, bp, pul)
             time.sleep(2)
+
 
 if __name__ == '__main__':
     BoQinput = Queue()
     BoQoutput = Queue()
     Pred = Queue()
     AlertQ = Queue()
-    t1 = threading.Thread(target= Input, args= (BoQinput,))
-    t2 = threading.Thread(target= middle, args= (BoQinput, BoQoutput,Pred, AlertQ,))
-    t3 = threading.Thread(target= Output, args= (BoQoutput, Pred, AlertQ,))
+    t1 = threading.Thread(target=Input, args=(BoQinput,))
+    t2 = threading.Thread(target=middle, args=(BoQinput, BoQoutput, Pred, AlertQ,))
+    t3 = threading.Thread(target=Output, args=(BoQoutput, Pred, AlertQ,))
     t1.start()
     t2.start()
     t3.start()
-
-
-

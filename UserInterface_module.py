@@ -38,8 +38,8 @@ class userInterface():
         send input to electron device to show on the screen
         """
         send_data = {
-            self
+            self.bo,self.bp,self.pul
         }
-        print(send_data)
+        print("Blood Oxygen:%s\nBlood presure:%s\nPulse:%s\n" % (self.bo, self.bp, self.pul))
         return send_data
 

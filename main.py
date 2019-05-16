@@ -73,17 +73,18 @@ def Output(BoQoutput, Pred, AlertQ):
     while True:
         # Interface
         if not BoQoutput.empty():
-            value = BoQoutput.get_nowait()
-            pred = Pred.get_nowait()
-            bo = value[0]
-            bp = value[1]
-            pul = value[2]
-            Alert_info = AlertQ.get_nowait()
-            print("Blood Oxygen:%f\nBlood presure:%f\nPulse:%f\n" % (bo, bp, pul))
-            print("Prediction:", pred, "\n")
-            print("Alert information:", Alert_info, "\n")
+            value = BoQoutput.get_nowait()  # get data
+            pred = Pred.get_nowait()  # get prediction data
+            bo = value[0]  # display blood oxygen
+            bp = value[1]  # display blood pressure
+            pul = value[2]  # display pulse
+            Alert_info = AlertQ.get_nowait()  # get alert signal
             U = userInterface()
             U.getFromData(bo, bp, pul)
+            U.sendToShow()
+            print("Prediction:", pred, "\n")
+            print("Alert information:", Alert_info, "\n")
+
             time.sleep(2)
 
 

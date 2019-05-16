@@ -110,5 +110,6 @@ class Medical():
 
 if __name__ == '__main__':
     M = Medical()
-    M.runprogram()
+    T = threading.Thread(target=M.runprogram)
+    T.start()
 

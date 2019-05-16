@@ -1,3 +1,11 @@
+"""
+In this architecture, I used my own input module, Wenjie Luo's Alert Module Xiang Li's AI module and Shilu Wu's
+User Interface module. The architecture includes three parts. The Input part is my Input module, and the middle part
+includes Alert module and AI module. The Output part is the User Interface. I use four Queues to let each part
+communicates with each other. The input part gets data and send it to middle part with BoQinput. The middle part
+processes the data and send the prediction data, alert signal and output data like blood pressure to the User Interface.
+Then the User Interface will display the data.
+"""
 from AiModule import AiModule as AI
 from UserInterface_module import userInterface
 import Input_Module_lkn as Inp

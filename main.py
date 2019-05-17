@@ -63,9 +63,9 @@ class Medical():
                 Alt.Alert_for_three_categories_input(boi)  # data check
                 Alt.Alert_for_three_categories_input(bpi)
                 Alt.Alert_for_three_categories_input(puli)
-                alert = Alt.Alert_Output()
-                self.AlertQ.put_nowait(alert)
-                self.BoQoutput.put_nowait(value)
+                alert = Alt.Alert_Output()  # alert signal
+                self.AlertQ.put_nowait(alert)  # send alert signal
+                self.BoQoutput.put_nowait(value)  # send data
                 time.sleep(2)
 
 
@@ -87,8 +87,8 @@ class Medical():
                 pul = value[2]  # display pulse
                 Alert_info = self.AlertQ.get_nowait()  # get alert signal
                 U = userInterface()
-                U.getFromData(bo, bp, pul)
-                U.sendToShow()
+                U.getFromData(bo, bp, pul)  # get data
+                U.sendToShow()  # display
                 print("Prediction:", pred, "\n")
                 print("Alert information:", Alert_info, "\n")
 

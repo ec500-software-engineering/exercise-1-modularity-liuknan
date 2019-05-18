@@ -26,3 +26,9 @@ The UI Module displays the input data and show these data to the users.
 We seperate all the modules into three parts. The first part is the Input Module, the second part is the UI Moudle and the rest of modules are in the last part. We implement three threads for all three parts so each part can work synchronously. And we have two queues for threads to communicate with each other.
 ![Image Invalid](https://github.com/ec500-software-engineering/exercise-1-modularity-liuknan/raw/master/500.png)
 
+### Output
+![Image Invalid](https://github.com/ec500-software-engineering/exercise-1-modularity-liuknan/raw/master/output.png)
+The data named blood pressure, blood Oxygen and Pulse are sent by input module, the User Interface will display them. 
+The prediction is the output of AI module. And for alert information, if everything goes well, it would be -1. If something
+happen, it would go to 0, 1 or 2, which depends on which data exceeds threshold.
+

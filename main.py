@@ -21,6 +21,10 @@ class Medical():
         self.BoQoutput = Queue()
         self.Pred = Queue()
         self.AlertQ = Queue()
+        self.bo = 0  # blood oxygen
+        self.bp = 0  # blood pressure
+        self.pul = 0  # pulse
+
 
     def Input(self):
         """
@@ -46,9 +50,13 @@ class Medical():
         while True:
             if not self.BoQinput.empty():
                 value = self.BoQinput.get_nowait()  # getting data from queue.
+
                 bo = value[0]  # blood oxygen
                 bp = value[1]  # blood pressure
                 pul = value[2]  # pulse
+                self.bo = value[0]
+                self.bp = value[1]
+                self.pul = value[2]
                 # AI
                 A = Ai()  # AI module
                 A.input_check(bo, bp, pul)  # check the type of input
@@ -106,6 +114,15 @@ class Medical():
         t1.start()
         t2.start()
         t3.start()
+
+    def get_bo(self):
+        return self.bo
+
+    def get_bp(self):
+        return self.bp
+
+    def get_pul(self):
+        return self.pul
 
 
 if __name__ == '__main__':

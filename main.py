@@ -15,7 +15,7 @@ import threading
 import time
 
 
-class Medical():
+class Medical:
     def __init__(self):
         self.BoQinput = Queue()
         self.BoQoutput = Queue()

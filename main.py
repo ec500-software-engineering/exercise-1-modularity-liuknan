@@ -116,12 +116,24 @@ class Medical:
         t3.start()
 
     def get_bo(self):
+        """
+        return blood oxygen
+        :return: bo
+        """
         return self.bo
 
     def get_bp(self):
+        """
+        return blood pressure
+        :return: bp
+        """
         return self.bp
 
     def get_pul(self):
+        """
+        return pulse
+        :return: pul
+        """
         return self.pul
 
 
